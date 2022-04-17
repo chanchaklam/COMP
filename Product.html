@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+        
+        
+        <title>layout Productpage</title>
+        <style>
+            
+            
+            
+            * {
+              margin: 0;  
+              padding: 0;
+              box-sizing: border-box;    
+            } 
+            .header {
+                min-height: 100vh;
+                width: 100%;
+                
+                background: linear-gradient(#000, #ebf8e1 10%, #000 50%);
+                background-position: center;
+                background-size: cover;
+                position: relative;
+            } 
+            .logobar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+            .logobar a{
+                background-color:rgb(233, 177, 177);
+                border-radius: 18px;
+                padding: 10px;
+                color: white;                
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;                
+                width: 100%;
+            }
+            .nav {
+                flex: 1;
+                text-align: right;
+            }    
+            nav ul{
+                display: inline-block;
+                list-style-type: none;
+            }
+            nav ul li {
+                display: inline-block;
+                margin-right: 20px;
+                color: aliceblue;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color: aliceblue;
+            }
+            nav ul li::after {
+                content: '';
+                width: 0%;
+                height: 2px;
+                background: #eef10c;
+                display: block;
+                margin: auto;
+                transition: 0.5s;
+            }
+            nav ul li:hover:after {
+                width: 100%;                
+            }
+            nav ul li ul { 
+                display: none;
+            }
+            nav ul li:hover > ul { 
+                display: block;
+            }
+            .search-container {
+                float: left;
+                border-radius: 50%;
+            }
+            input[type=text] {
+                padding: 15px 100px;                
+                margin-top: 18px;
+                font-size: 17px;
+                border-radius: 5px;
+                text-align: left;
+                
+            }
+            .search-container button {
+                float: right;
+                padding: 15px 10px;
+                margin-top: 8px;
+                margin-right: 16px;
+                background: #ddd;
+                font-size: 17px;
+                border-radius: 20%;
+                cursor: pointer;
+                position:absolute ;
+            }
+            .search-container button:hover {
+                background: #ccc;
+            }
+            
+            section {
+                max-width: 1300px;
+                margin: auto;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .dropdown button:hover {
+                opacity: 0.5;
+            }
+            .dropdown-toggle{
+                background-color:rgb(233, 177, 177);
+                border-radius: 18px;
+                padding: 10px;                
+            }
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+
+
+            .loginpage button {
+                background-color:rgb(233, 177, 177);
+                border-radius: 18px;
+                padding: 10px;
+                color: white;                
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;                
+                width: 100%;
+            }
+            .loginpage button:hover {
+                opacity: 0.5;
+            }
+            .loginpage .CAbutton {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #ec1708;
+            }
+
+            .loginpage .imgcontainer {
+                text-align: center;
+                margin: 24px 0 12px 0;
+                position: relative;
+            }
+            .loginpage img {
+                width: 20%;
+                border-radius: 50%;
+            }
+
+            .loginpage .container {
+                padding: 16px;
+                color: #000;
+            }
+
+            .loginpage span.psw {
+                float: right;
+                padding-top: 16px;
+            }
+
+            .loginpage .modal {
+                display: none; 
+                position: fixed; 
+                z-index: 1; 
+                left: 0;
+                top: 0;
+                width: 100%; 
+                height: 100%; 
+                overflow: auto; 
+                background-color: rgb(0,0,0); 
+                background-color: rgba(0,0,0,0.4); 
+                padding-top: 60px;
+            }
+            .loginpage .modal-content {
+                background-color:#dddddd;
+                margin: 5% auto 15% auto; 
+                border: 1px solid rgb(8, 8, 8);
+                width: 80%; 
+            }
+
+            .loginpage .close {
+                position: absolute;
+                right: 25px;
+                top: 0;
+                color: #000;
+                font-size: 35px;
+                font-weight: bold;
+            }
+            .loginpage .close:hover,
+            .close:focus {
+                color: red;
+                cursor: pointer;
+            }
+
+
+            .loginpage .animate {
+                -webkit-animation: animatezoom 0.6s;
+                animation: animatezoom 0.6s
+            }
+            @-webkit-keyframes animatezoom {
+                from {-webkit-transform: scale(0)} 
+                to {-webkit-transform: scale(1)}
+            }  
+            @keyframes animatezoom {
+                from {transform: scale(0)} 
+                to {transform: scale(1)}
+            }
+
+
+
+
+            
+
+            .TheNewProductBar {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .TheNewProductBar1 {
+                box-sizing: border-box;
+                display: flex;
+                position: relative;
+                flex-direction: row;
+                flex-shrink: 0;
+                align-content: flex-start;
+                border: 0 solid #000;
+                margin: 0;
+                padding: 0;
+                min-width: 0;
+                
+            }
+            .p1 {                
+                flex-direction: row;
+                background-color: #fff;
+                width: 95%;
+                height: 100%;
+                border-radius: 18px; 
+                position:relative; 
+                             
+            }
+            .list1 {
+                flex-direction:column;
+                width: 25%;
+                padding: 10px;
+                position:relative;
+            }            
+            .list1 h1 {   
+                margin-top: 10px;
+                justify-content: center;
+                align-items:center;
+                font-size: 30px;
+                font-weight: bold;
+                color: rgb(12, 12, 12);
+            }
+
+            .Categories111 {
+                flex-direction:column;
+                display: flex;
+                text-decoration: none;
+                color: rgb(12, 12, 12);
+                width: 100%;
+                padding-left: 18px;
+                height: 100%;
+                text-align: left;
+                font-size: 20px;
+                padding: 20px;
+                position:relative;
+                
+            }
+            .price-input{
+                width: 100%;
+                display: flex;
+                margin: 30px 0 35px;
+            }
+            .price-input .field{
+                display: flex;
+                width: 100%;
+                height: 45px;
+                align-items: center;
+            }
+            .field input{
+                width: 100%;
+                height: 100%;
+                outline: none;
+                font-size: 19px;
+                margin-left: 12px;
+                border-radius: 5px;
+                text-align: center;
+                border: 1px solid black;                
+            }
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+            .price-input .separator{
+                width: 130px;
+                display: flex;
+                font-size: 19px;
+                align-items: center;
+                justify-content: center;
+            }
+            .slider{
+                height: 5px;
+                position: relative;
+                background: #ddd;
+                border-radius: 10px;
+            }
+            .slider .progress{
+                height: 70%;
+                left: 12.5%;
+                right: 12.5%;
+                position: absolute;
+                border-radius: 10px;
+                background: #01ddff;
+            }
+            .range-input{
+                position: relative;
+            }
+            .range-input input{
+                position: absolute;
+                width: 100%;
+                height: 5px;
+                top: -5px;
+                background: none;
+                pointer-events: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+            input[type="range"]::-webkit-slider-thumb{
+                height: 17px;
+                width: 17px;
+                border-radius: 50%;
+                background: #4d05f5;
+                pointer-events: auto;
+                -webkit-appearance: none;
+                box-shadow: 0 0 6px rgba(0,0,0,0.05);
+            }
+            input[type="range"]::-moz-range-thumb{
+                height: 17px;
+                width: 17px;
+                border: none;
+                border-radius: 50%;
+                background: #4d05f5;
+                pointer-events: auto;
+                -moz-appearance: none;
+                box-shadow: 0 0 6px rgba(0,0,0,0.05);
+            }
+
+
+
+
+            .list2 {                
+                flex-direction:column;
+                width: 75%;
+                float: left;
+                position:relative;
+                min-height:1px;
+                padding: 10px;
+                padding-right:15px;
+                padding-left:15px;
+            }
+            .list2 .search-container {
+                float: left;
+                border-radius: 50%;
+            }
+            .list2 input[type=text] {
+                padding: 15px 10px;                
+                margin-top: 18px;
+                font-size: 17px;
+                border-radius: 20%;
+                text-align: left;
+                
+            }
+            .list2 .search-container button {
+                float: right;
+                padding: 15px 10px;
+                margin-top: 18px;
+                margin-right: 16px;
+                background: #ddd;
+                font-size: 17px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            .list2 search-container button:hover {
+                background: #ccc;
+            }
+            .list2 .dropdown{
+                right: 0%;
+                padding: 10px;
+            }
+            .list2 .dropdown-menu{
+                right: 0%;
+                left: auto;
+                padding: 10px;
+                margin-top: 20px;
+            }
+            .list2 .dropdown-toggle{
+                background-color:rgb(233, 177, 177);
+                border-radius: 18px;
+                padding: 10px;
+                float: right;
+                margin-top: auto;
+               
+            }
+            .list2 .featureitem {
+                flex: 30%;
+            }
+            .featureitem .item {
+                position: relative;
+                transition: .5s;
+                border: 1px solid;
+                height: 400px;
+            }
+            .item:hover {
+                transform: scale(1.2);
+            }
+            .featureitem h5 {
+                white-space: nowrap;   
+                overflow: hidden;                
+                text-overflow: ellipsis;  
+                text-align: center; 
+            }
+            .item img {                
+                width: 100%;                
+                height: auto;                
+            }
+            
+            
+
+
+
+            .a1 {
+                display: inline-block;
+                text-decoration: none;
+                color: #fff;                
+                border: 1px solid #fff;
+                border-radius: 30px;
+                padding: 12px 34px;
+                font-size: 13px;
+                background: rgb(0, 0, 0);
+                position: relative;
+                cursor: pointer;
+            }
+            .a1:hover {
+                border: 1px solid #8a0cf1;
+                background: #8a0cf1;
+                transition: 0.5s;
+            }
+            .p1 img {
+                max-width: 100%;
+                padding: 50px 0;
+            }
+
+            .pagination {
+                display: inline-block;
+            }
+
+            .pagination a {
+                font-size: 20px;
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+            
+
+            .foot {
+                
+                background: #000;
+                color: #8a8a8a;
+                font-size: 16px;
+                position: relative;
+            }
+            .foot p {
+                color: #8a8a8a;
+            }
+            .foot h3 {
+                color: #fff;
+                margin-bottom: 20px;
+            }
+            .foot1, .foot2, .foot3{
+                min-width: 250px;
+                margin-bottom: 20px;
+            }
+            
+
+
+
+
+            
+
+
+
+        </style>
+    </head>
+    <body>
+        <section class="header">            
+            <div class="logobar">
+                <div class="logo">
+                    <img src="image/logo.png" width="125px">
+                </div>
+                <div class="search-container">
+                    <form action="/action_page.php">
+                      <input type="text" placeholder="Search..." name="search">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="Layout.html">Home</a></li>
+                        <li>                            
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" type="button" data-toggle="dropdown">Product<i class="fa fa-caret-down"></i></button>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">C1</li>
+                                    <li><a href="Product.html">C1.1</a></li>
+                                    <li><a href="Product.html">C2</a></li>
+                                    <li><a href="Product.html">C3</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">A1</li>
+                                    <li><a href="Product.html">A1.1</a></li>
+                                </ul>
+                            </div>                              
+                        </li>
+                        <li><a href="">About</a></li>
+                        <li><a href="Cart.html">Cart</a></li>
+                        <li>
+                            <div class="loginpage">
+                                <button onclick="document.getElementById('id').style.display='block'" style="width:auto;">Login</button>
+
+                                            <div id="id" class="modal">
+  
+                                                <form class="modal-content animate" action="/action_page.php" method="post">
+                                                    <div class="imgcontainer">
+                                                        <span onclick="document.getElementById('id').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                                        <img src="image/logo.png" alt="logo">
+                                                    </div>
+
+                                                    <div class="container">
+                                                        <label for="username"><b>Username</b></label>
+                                                        <input type="text" placeholder="Enter Username" name="username" required>
+
+                                                        <label for="password"><b>Password</b></label>
+                                                        <input type="password" placeholder="Enter Password" name="password" required>
+        
+                                                        <button type="submit">Login</button>
+                                                        <label>
+                                                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="container" style="background-color:#f1f1f1">                                                        
+                                                        <span class="password">Forgot <a href="#" style="color: #000;">password?</a></span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <script>                                                
+                                                var modal = document.getElementById('id'); 
+                                                window.onclick = function(event) {
+                                                    if (event.target == modal) {
+                                                        modal.style.display = "none";
+                                                    }
+                                                }
+                                            </script>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="loginpage">
+                                <button type="button" onclick="document.getElementById('cid').style.display='block'" style="width:auto;">Crate Account</button>
+                                                            <div id="cid" class="modal">
+    
+                                                                <form class="modal-content animate" action="/action_page.php" method="post">
+                                                                    <div class="imgcontainer">
+                                                                        <span onclick="document.getElementById('cid').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                                                        <img src="image/logo.png" alt="logo">
+                                                                    </div>
+                
+                                                                    <div class="container">
+                                                                        <label for="username"><b>Username</b></label>
+                                                                        <input type="text" placeholder="Enter Username" name="username" required>
+                
+                                                                        <label for="password"><b>Password</b></label>
+                                                                        <input type="password" placeholder="Enter Password" name="password" required>
+
+                                                                        <label for="password2"><b>Password</b></label>
+                                                                        <input type="password" placeholder="Enter Password Again" name="password2" required>
+                        
+                                                                        <button type="submit">Create</button>
+                                                                        
+                                                                    </div>  
+                                                                </form>
+                                                            </div>
+                                                            <script>                                                
+                                                                var modal = document.getElementById('cid'); 
+                                                                window.onclick = function(event) {
+                                                                    if (event.target == modal) {
+                                                                        modal.style.display = "none";
+                                                                    }
+                                                                }
+                                                            </script>
+                            </div>
+                        </li>
+                        <img src="image/buy.png" width="30px" height="30px">
+                    </ul>
+                </nav>                
+            </div>
+
+            <div class="TheNewProductBar1 p1">
+                <div class="list1">
+                    <h1>Price Range</h1>
+                    <div class="price-input">
+                        <div class="field">
+                          <span>Min</span>
+                          <input type="number" class="input-min" value="2500">
+                        </div>
+                        <div class="separator">-</div>
+                        <div class="field">
+                          <span>Max</span>
+                          <input type="number" class="input-max" value="17500">
+                        </div>
+                    </div> 
+                      <div class="slider">
+                        <div class="progress"></div>
+                      </div>
+                      <div class="range-input">
+                        <input type="range" class="range-min" min="0" max="20000" value="2500" step="100">
+                        <input type="range" class="range-max" min="0" max="20000" value="17500" step="100">
+                      </div>
+                    
+                    <hr>                    
+                    <div class="Categories111">
+                        <h1>Categories</h1>                    
+                        <a href="Product.html">All</a>
+                        <a href="Product.html">Front Load Washer</a>
+                        <a href="Product.html">Combo Washer Dryer</a>
+                        <a href="Product.html">Top Load Washer</a>
+                        <hr>
+                        <h1>Brands</h1>                    
+                        <a href="Product.html">Whirlpool</a>
+                        <a href="Product.html">Samsung</a>
+                        <a href="Product.html">Rasonic</a>
+                        <a href="Product.html">Panasonic</a>       
+                        <a href="Product.html">LG</a>
+                        <a href="Product.html">Hitachi</a>
+                    </div>
+                    <script>
+                        const rangeInput = document.querySelectorAll(".range-input input"),
+                        priceInput = document.querySelectorAll(".price-input input"),
+                        range = document.querySelector(".slider .progress");
+                        let priceGap = 1500;
+
+                        priceInput.forEach(input =>{
+                            input.addEventListener("input", function myevent(a) {
+                                let minimumPrice = parseInt(priceInput[0].value),
+                                maximumPrice = parseInt(priceInput[1].value);
+        
+                                if((maximumPrice - minimumPrice >= priceGap) && maximumPrice <= rangeInput[1].max){
+                                    if(a.target.className === "input-min"){
+                                    rangeInput[0].value = minimumPrice;
+                                    range.style.left = ((minimumPrice / rangeInput[0].max) * 100) + "%";
+                                    }else{
+                                    rangeInput[1].value = maximumPrice;
+                                    range.style.right = 100 - (maximumPrice / rangeInput[1].max) * 100 + "%";
+                                    }
+                                }
+                            });
+                        });
+
+                        rangeInput.forEach(input =>{
+                            input.addEventListener("input", function myevent(a) {
+                                let minimumValue = parseInt(rangeInput[0].value),
+                                maximumValue = parseInt(rangeInput[1].value);
+
+                                if((maximumValue - minimumValue) < priceGap){
+                                    if(a.target.className === "range-min"){
+                                        rangeInput[0].value = maximumValue - priceGap
+                                    }else{
+                                        rangeInput[1].value = minimumValue + priceGap;
+                                    }
+                                }else{
+                                    priceInput[0].value = minimumValue;
+                                    priceInput[1].value = maximumValue;
+                                    range.style.left = ((minimumValue / rangeInput[0].max) * 100) + "%";
+                                    range.style.right = 100 - (maximumValue / rangeInput[1].max) * 100 + "%";
+                                }                            
+                            });                        
+                        });
+                    </script>
+                   
+                </div>
+                <div class="list2">
+                    <form action="">
+                        <div class="search-container">
+                            <form action="/action_page.php">
+                              <input type="text" placeholder="Search by name" name="search">
+                              <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </form>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" id="L2Dropd">Sort by<i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-menu" aria-labelledby="L2Dropd">
+                            <a class="dropdown-header" href="#">Price</a>
+                            <a class="dropdown-header" href="#">Popularity</a>
+                            <a class="dropdown-header" href="#">Rating</a>
+                        </div>                        
+                    </div>
+                    <hr style="padding: 10px; color:#ddd;"><h3>Feature Item </h3><hr>
+                    <div class="featureitem">
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P1.png" alt="iQ300 washing machine, front loader 8 kg 1200 rpm WM12N280HK">
+                            </div>
+                            <h5>iQ300 washing machine, front loader 8 kg 1200 rpm WM12N280HK</h5>                                    
+                            <h5>$6,690.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div> 
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P2.png" alt="AWE7101N Top Loading Drum Washer 6th Sense / 7kg / 1000rpm">
+                            </div>
+                            <h5>AWE7101N Top Loading Drum Washer 6th Sense / 7kg / 1000rpm</h5>                                    
+                            <h5>$4,490.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P3.png" alt="TW-BL80A2H(WW) 440mm Ultra Slim Inverter Front Loading Washing Machine (7Kg)">
+                            </div>
+                            <h5>TW-BL80A2H(WW) 440mm Ultra Slim Inverter Front Loading Washing Machine (7Kg)</h5>                                    
+                            <h5>$4,880.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P4.png" alt="LG Vivace 8KG 1200rpm AI Washing MachineF-1208V5W">
+                            </div>
+                            <h5>LG Vivace 8KG 1200rpm AI Washing MachineF-1208V5W</h5>                                    
+                            <h5>$4,190.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P5.png" alt="WF-T1207KW 7KG 1200rpm Washing Machine">
+                            </div>
+                            <h5>LG WF-T1207KW 7kg 1200rpm Inverter Front Load Washer</h5>                                    
+                            <h5>$4,250.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P6.png" alt="Whirlpool TDLR70223 Top Loading Drum Washer 6th Sense Colours / 7kg / 1200rpm">
+                            </div>
+                            <h5>Whirlpool TDLR70223 Top Loading Drum Washer 6th Sense Colours / 7kg / 1200rpm</h5>                                    
+                            <h5>$5,290.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P7.png" alt="Hitachi BW-V80FSP">
+                            </div>
+                            <h5>Hitachi BW-V80FSP</h5>                                    
+                            <h5>$4,450.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div> 
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P8.png" alt="Hitachi NW-65FSP">
+                            </div>
+                            <h5>Hitachi NW-65FSP</h5>                                    
+                            <h5>$3,110.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-6 p-3">
+                            <div class="item">                                
+                                <img src="image/P9.png" alt="Hitachi SF-P90XA">
+                            </div>
+                            <h5>Hitachi SF-P90XA</h5>                                    
+                            <h5>$4,450.00</h5> 
+                            <a href="ProductDetail.html" target="_blank" ><span style='justify-content: space-between; font-size:16px; margin-right: 10px;'><i class="fa fa-file-text-o"></i>View Detail</span></a>
+                            <a href="" ><span style='justify-content: space-between; font-size:16px; margin-left: 10px;'><i class='fa fa-hand-holding-usd'></i>Product comparison</span></a>
+                             
+                        </div>
+                        
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+
+
+                        
+                            
+                        
+                    </div>
+                    
+                                       
+                </div>
+                
+                
+            </div>
+            
+
+            <div class="foot">    
+                <div class="TheNewProductBar">
+                    <div class="foot1">
+                        <h3>Get to Know Us</h3>
+                        <p>phone number/e-mail ..... </p>                        
+                    </div>
+                    <div class="foot2">
+                        <img src="image/logo.png"  width="125px">
+                        <p>Our purpose is djskaghldkfjkasdhgfuiadjkafdshljkhfdhaskjdhfa</p>
+                    </div>
+                    <div class="foot3">
+                        <h3>Let Us Help You</h3>
+                        <ul>
+                            <li>Coupons</li>
+                            <li>Blog</li>
+                            <li>policy</li>
+                            <li>account</li>
+                            <li>join us</li>
+                        </ul>
+                    </div>
+                </div>            
+            </div>
+        </section>
+    </body>
+</html>
